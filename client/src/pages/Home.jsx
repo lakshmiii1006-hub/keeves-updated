@@ -37,9 +37,9 @@ const carouselImages = [
 ];
 
 const serviceCardImages = {
-  structural: "https://res.cloudinary.com/dyxijlh28/image/upload/v1770742511/Screenshot_2026-02-10_195700_gkgwyk.png",
+  structural: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772958799/Screenshot_2026-03-08_140138_nsjmqs.png",
   connections: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772871066/99191276923_fcfzol.png",
-  misc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1770742603/Screenshot_2026-02-10_195616_dzbddw.png"
+  misc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772958799/Screenshot_2026-03-08_140152_yx3ehb.png"
 };
 
 const certLogos = {
