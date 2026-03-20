@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,jsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+      trebuchet: ['"Trebuchet MS"', 'Trebuchet', 'sans-serif'],
+    },
+    },
   },
   plugins: [],
+
+  
 };

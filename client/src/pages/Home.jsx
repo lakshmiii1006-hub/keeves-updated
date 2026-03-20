@@ -39,12 +39,13 @@ const carouselImages = [
 const serviceCardImages = {
   structural: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772958799/Screenshot_2026-03-08_140138_nsjmqs.png",
   connections: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772871066/99191276923_fcfzol.png",
-  misc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772958799/Screenshot_2026-03-08_140152_yx3ehb.png"
+  misc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1774015603/Screenshot_2026-03-20_193010_yj0a1n.png"
 };
 
 const certLogos = {
-  sds2: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772792268/c4e4ac5e-9b19-478e-a5fa-859583c4c5e3.png",
-  aisc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1772788849/8c4fa5c9-fb5e-45c2-8617-30d653684cba.png"
+  sds2: "https://res.cloudinary.com/dyxijlh28/image/upload/v1773563093/SDS2_by_ALLPLAN_is_part_of_the_Nemetschek_Group_vzsw6k.jpg",
+  aisc: "https://res.cloudinary.com/dyxijlh28/image/upload/v1773563081/associate_member_logo_stpevr.jpg",
+  deta: "https://res.cloudinary.com/dyxijlh28/image/upload/v1773563065/detailer_member_logo_qduwfa.jpg"
 };
 
 export default function Home() {
@@ -60,22 +61,28 @@ export default function Home() {
   }, []);
 
   const services = {
-    structural: { title: "Structural Steel Detailing", icon: Building2, description: "High-quality detailing for beams, columns, and structural components." },
-    connections: { title: "Connecting Engineering", icon: Network, description: "Precise connection designs and calculations to guarantee structural integrity." },
-    misc: { title: "Miscellaneous Steel", icon: Layers, description: "Expert detailing for stairs, railings, ladders, and custom steel elements." }
+    structural: { title: " Steel Detailing of Structural and Miscellaneous Steel", icon: Building2, description: "Innovative, precision driven steel detailing that delivers exceptional accuracy and clear, build ready documentation." },
+    connections: { title: "Connecting Engineering", icon: Network, description: "Efficient, code compliant connection designs that enhance structural integrity and streamline both fabrication and erection." },
+    misc: { title: "PE Stamping", icon: ShieldCheck, description: "Licensed Professional Engineer (PE) stamping for drawings and calculations—ensuring safety, accuracy, and full compliance with local building codes." }
   };
 
   return (
-    <>
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:ital,wght@0,400;0,700;1,400&display=swap');
-        .hero-serif { font-family: 'Times New Roman', Times, serif !important; font-weight: 700 !important; letter-spacing: 0.02em !important; }
-      `}</style>
-      
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-<section className="relative min-h-[115vh] pt-32 pb-20 flex items-center justify-center overflow-hidden bg-slate-900 text-white">
+  <>
+  <style jsx global>{`
+    body {
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+    }
 
+    .hero-serif {
+      font-family: 'Trebuchet MS', Arial, sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
+    }
+  `}</style>
+
+  <main className="min-h-screen bg-white">
+  {/* Hero Section - Light Industrial Theme */}
+<section className="relative min-h-[115vh] pt-56 pb-20 flex items-center justify-center overflow-hidden bg-white text-slate-900">
   {/* Background Images */}
   <div className="absolute inset-0 z-0">
     <AnimatePresence mode="wait">
@@ -84,93 +91,51 @@ export default function Home() {
         src={carouselImages[activeHeroImage]}
         className="w-full h-full object-cover absolute inset-0"
         initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 0.7, scale: 1 }}
+        animate={{ opacity: 1, scale: 1 }} // Increased opacity for light mode
         exit={{ opacity: 0 }}
         transition={{ duration: 1.6 }}
       />
     </AnimatePresence>
 
-    <div className="absolute inset-0 bg-slate-900/60" />
+    {/* Light Overlay: Changed from slate-900/60 to a white/70 gradient */}
+    <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/70 to-white" />
   </div>
-
 
   {/* Content */}
   <div className="relative z-40 text-center px-6 max-w-6xl w-full">
-
-    {/* Logos */}
-    <motion.div
-      initial={{ opacity: 0, y: -40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9 }}
-      className="flex flex-wrap justify-center items-center gap-6 mb-12"
-    >
-
-      {/* SDS2 */}
-      <motion.div
-        whileHover={{ scale: 1.08 }}
-        className="flex items-center gap-3 bg-white/10 backdrop-blur-xl pl-2 pr-5 py-2 rounded-full border border-white/30 shadow-2xl"
-      >
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1.5 shadow-md">
-          <img src={certLogos.sds2} alt="SDS2" className="w-full h-full object-contain" />
-        </div>
-        <span className="text-xs font-semibold tracking-widest uppercase text-sky-100">
-          SDS2 Certified Detailers
-        </span>
-      </motion.div>
-
-      {/* AISC */}
-      <motion.div
-        whileHover={{ scale: 1.08 }}
-        className="flex items-center gap-3 bg-white/10 backdrop-blur-xl pl-2 pr-5 py-2 rounded-full border border-white/30 shadow-2xl"
-      >
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-md">
-          <img src={certLogos.aisc} alt="AISC" className="w-full h-full object-contain" />
-        </div>
-        <span className="text-xs font-semibold tracking-widest uppercase text-sky-100">
-          AISC Associate
-        </span>
-      </motion.div>
-
-    </motion.div>
-
-
-    {/* TITLE */}
+    
+    {/* TITLE - Updated to Dark Text */}
     <motion.h1
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="hero-serif text-[4rem] md:text-[6rem] lg:text-[8rem] xl:text-[9.5rem] tracking-[0.05em] mb-12 leading-none bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text text-transparent"
+      className="hero-serif text-[4rem] md:text-[6rem] lg:text-[8rem] xl:text-[9.5rem] tracking-[0.05em] mb-12 leading-none bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent"
     >
       KEEVES
-      <br />
-      <span className="text-sky-400 font-normal">STEEL</span>
+      <span className="ml-6 text-sky-600 font-normal">STEEL</span>
     </motion.h1>
 
-
-    {/* Subtitle */}
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 1 }}
-      className="max-w-4xl mx-auto mb-12"
+      className="max-w-6xl mx-auto mb-12 text-center"
     >
-      <div className="text-xl md:text-2xl font-light text-slate-200 leading-relaxed tracking-wide">
-        Reimagining Steel Detailing with <br />
-        <span className="text-sky-400 font-semibold text-2xl md:text-3xl tracking-tight">
+      <p className="text-xl md:text-2xl font-light text-slate-700 tracking-wide whitespace-nowrap">
+        Reimagining Steel Detailing with{" "}
+        <span className="text-sky-600 font-semibold">
           Next Level Innovation
-        </span>
-        <br />
+        </span>{" "}
         and Absolute Accuracy.
-      </div>
+      </p>
     </motion.div>
 
-
-    {/* Button */}
+    {/* Button - Updated for Light Theme */}
     <motion.button
       onClick={() => navigate("/projects")}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.95 }}
-      className="group relative px-12 py-6 bg-white/10 backdrop-blur-xl border-2 border-white/30 rounded-3xl font-bold uppercase tracking-widest text-xl text-white hover:bg-white/20 transition-all duration-500 shadow-2xl"
+      className="group relative px-12 py-6 bg-slate-900 border-2 border-slate-900 rounded-3xl font-bold uppercase tracking-widest text-xl text-white hover:bg-slate-800 transition-all duration-500 shadow-2xl"
     >
       <span className="relative z-10 flex items-center gap-3">
         View Work
@@ -181,28 +146,31 @@ export default function Home() {
   </div>
 </section>
 
-        {/* JOURNEY SECTION - WITH SMALLER CAROUSEL RESTORED */}
-        <section className="py-32 px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto mb-24">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold uppercase leading-[0.85] tracking-tight text-slate-900 mb-12">
-                  OUR <br /><span className="text-sky-700 font-light">JOURNEY</span>
-                </h2>
-              </motion.div>
-              
-              <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-6 max-w-xl text-slate-500 text-lg leading-relaxed">
-                  <p>Incorporated on <span className="font-bold text-slate-800">August 4, 2021</span>, Keeves Steel was founded with a vision to become a trusted partner in technical and engineering excellence.</p>
-                  <p>Since then, we have shown steady growth, driven by a talented team and dedicated leadership. We deliver top-notch quality structural steel detailing services designed to empower architects, engineers, and fabricators with unmatched accuracy and efficiency.</p>
-                  <div className="pt-6 border-t border-slate-200">
-                    <p className="text-slate-600 text-sm font-medium uppercase tracking-wide">
-                      By combining precision craftsmanship with advanced detailing technology, we produce shop drawings, erection plans, and 3D models that accelerate workflows, reduce rework, and keep projects moving smoothly from concept to completion.
-                    </p>
-                  </div>
-              </motion.div>
-            </div>
+        {/* JOURNEY SECTION - UPDATED TYPOGRAPHY */}
+<section className="py-32 px-6 lg:px-8 bg-white">
+  <div className="max-w-7xl mx-auto mb-24">
+    <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+        <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold uppercase leading-[0.85] tracking-tight text-slate-900 mb-12">
+          OUR <br /><span className="text-sky-700 font-light">JOURNEY</span>
+        </h2>
+      </motion.div>
+      
+      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-6 max-w-xl text-slate-500 text-lg leading-relaxed">
+          <p>Incorporated on <span className="font-bold text-slate-800">August 4, 2021</span>, Keeves Steel was founded with a vision to become a trusted partner in technical and engineering excellence.</p>
+          <p>Since then, we have shown steady growth, driven by a talented team and dedicated leadership. We deliver top-notch quality structural steel detailing services designed to empower architects, engineers, and fabricators with unmatched accuracy and efficiency.</p>
+          
+          <div className="pt-6 border-t border-slate-200">
+            {/* Removed 'uppercase' and 'text-sm' classes here */}
+            <p className="text-slate-600 font-medium tracking-wide">
+              By combining precision craftsmanship with advanced detailing technology, we produce shop drawings, erection plans, and 3D models that accelerate workflows, reduce rework, and keep projects moving smoothly from concept to completion.
+            </p>
           </div>
+      </motion.div>
+    </div>
+  </div>
 
+ 
           {/* Original Smaller Carousel Styling restored here */}
           <div className="relative max-w-7xl mx-auto px-6">
             <div className="relative flex overflow-hidden -mx-6">
@@ -267,6 +235,63 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* LICENSES & CERTIFICATIONS SECTION */}
+<section className="py-24 px-6 lg:px-8 bg-white border-t border-slate-100">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      
+      {/* Text Content */}
+      <div className="max-w-xl">
+        <h2 className="text-sky-700 font-bold text-sm tracking-[0.3em] uppercase mb-4">
+          Industry Standards
+        </h2>
+        <h3 className="text-4xl font-semibold uppercase tracking-tight text-slate-900 mb-6">
+          Certified Excellence
+        </h3>
+        <p className="text-slate-500 text-lg leading-relaxed">
+          Our commitment to quality is backed by industry-leading certifications. 
+          We strictly adhere to AISC standards and utilize advanced detailing 
+          technologies to ensure every project meets the highest level of structural integrity.
+        </p>
+      </div>
+
+      {/* Logo Grid - AISC Fixed at 1.125in, others scaled up */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center">
+        
+        {/* AISC - Strictly Fixed Size */}
+        <motion.div whileHover={{ y: -5 }} className="flex items-center justify-center">
+          <img 
+            src={certLogos.aisc} 
+            alt="AISC Member" 
+            className="object-contain"
+            style={{ width: '1.125in' }} 
+          />
+        </motion.div>
+
+        {/* SDS2 - Scaled Larger */}
+        <motion.div whileHover={{ y: -5 }} className="flex items-center justify-center">
+          <img 
+            src={certLogos.sds2} 
+            alt="SDS2 Certified" 
+            className="object-contain"
+            style={{ width: '1.8in' }} 
+          />
+        </motion.div>
+
+        {/* Third License - Scaled Larger */}
+        <motion.div whileHover={{ y: -5 }} className="flex items-center justify-center">
+          <img 
+            src={certLogos.deta} 
+            alt="Professional Certification" 
+            className="object-contain"
+            style={{ width: '1.125in' }} 
+          />
+        </motion.div>
+
+      </div>
+    </div>
+  </div>
+</section>
       </main>
     </>
   );

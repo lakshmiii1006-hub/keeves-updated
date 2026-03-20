@@ -12,7 +12,11 @@ const Navbar = () => {
     { name: 'Projects', href: '/projects' },
   ];
 
-  const mailtoHref = "mailto:keeves@keevessteel.com?subject=Project%20Inquiry%20-%20Keeves%20Steel";
+  // The specific text you requested
+  const disclaimerText = "By contacting us, you consent to Keeves Steel using your details solely to respond to your inquiry, with your information securely transferred and processed in India in accordance with our Privacy Policy.";
+  
+  // Encoded mailto link that includes the disclaimer in the body of the email
+  const mailtoHref = `mailto:keeves@keevessteel.com?subject=Project%20Inquiry%20-%20Keeves%20Steel&body=${encodeURIComponent("\n\n---\n" + disclaimerText)}`;
 
   return (
     <header className="fixed top-0 w-full z-[999]">
@@ -34,12 +38,13 @@ const Navbar = () => {
           </div>
 
           <a
-            href={mailtoHref}
-            className="flex items-center gap-2 hover:text-white transition-colors"
-          >
-            <Mail size={12} className="text-sky-400" />
-            keeves@keevessteel.com
-          </a>
+  href={mailtoHref}
+  title={disclaimerText}
+  className="flex items-center gap-2 hover:text-white transition-colors normal-case"
+>
+  <Mail size={12} className="text-sky-400" />
+  keeves@keevessteel.com
+</a>
 
         </div>
       </div>
@@ -52,9 +57,9 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink to="/" className="block">
               <img
-                src="https://res.cloudinary.com/dyxijlh28/image/upload/v1772869618/keevesteel_logo_big_ftsbgw.png"
+                src="https://res.cloudinary.com/dyxijlh28/image/upload/v1773410357/keevesteel_logo_big_ljqgbz.png"
                 alt="Keeves Steel"
-                className="h-10 lg:h-12 w-auto object-contain"
+                className="h-15 lg:h-18 w-auto object-contain"
               />
             </NavLink>
           </div>
@@ -63,7 +68,6 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-10">
 
             <div className="flex items-center gap-8 text-[13px] font-bold uppercase tracking-[0.2em]">
-
               {navLinks.map((link) => (
                 <NavLink
                   key={link.name}
@@ -86,12 +90,12 @@ const Navbar = () => {
                   )}
                 </NavLink>
               ))}
-
             </div>
 
-            {/* CONTACT BUTTON */}
+            {/* CONTACT BUTTON WITH HOVER DISCLAIMER */}
             <a
               href={mailtoHref}
+              title={disclaimerText} // Tooltip for legal compliance
               className="px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95 bg-[#005bc4] text-white hover:bg-slate-900 shadow-lg shadow-blue-900/10"
             >
               Contact Us
@@ -112,14 +116,12 @@ const Navbar = () => {
         {/* MOBILE MENU */}
         <AnimatePresence>
           {mobileMenuOpen && (
-
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
             >
-
               <div className="flex flex-col p-8 gap-6 items-center text-center">
 
                 <div className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mb-2">
@@ -146,18 +148,20 @@ const Navbar = () => {
                 <a
                   href={mailtoHref}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full max-w-xs bg-[#005bc4] text-white py-4 rounded-full font-bold uppercase tracking-widest shadow-md"
+                  className="w-full max-w-xs bg-[#005bc4] text-white py-4 rounded-full font-bold uppercase tracking-widest shadow-md mb-2"
                 >
                   Contact Us
                 </a>
 
+                {/* MOBILE VISIBLE DISCLAIMER - BOLD VERSION */}
+                <p className="text-[10px] text-slate-600 font-bold leading-relaxed max-w-xs tracking-tight">
+                  "{disclaimerText}"
+                </p>
+
               </div>
-
             </motion.div>
-
           )}
         </AnimatePresence>
-
       </nav>
     </header>
   );
